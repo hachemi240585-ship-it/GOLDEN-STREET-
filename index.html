@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Street - الثورة الحقيقية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E4B0;
+            --gold-dark: #B8941F;
+            --dark-bg: #0A0A0A;
+            --dark-card: #1A1A1A;
+            --accent-purple: #8B5CF6;
+            --accent-cyan: #06B6D4;
+            --accent-green: #10B981;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body[dir="ltr"] { font-family: 'Poppins', sans-serif; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
+
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        body[dir="ltr"] .language-selector { right: auto; left: 20px; }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover { color: var(--gold-light); background: rgba(212, 175, 55, 0.1); }
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+            color: var(--dark-bg);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 100px 0 60px;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .crown-icon {
+            font-size: 60px;
+            filter: drop-shadow(0 0 20px var(--gold-primary));
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .app-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 92px);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 3vw, 28px);
+            color: var(--gold-light);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* Revolution Section */
+        .revolution-section {
+            margin: 80px 0;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .revolution-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .revolution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .revolution-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            padding: 40px;
+            border-radius: 25px;
+            border: 2px solid var(--gold-primary);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .revolution-main-text {
+            font-size: clamp(20px, 4vw, 32px);
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .text-gold {
+            color: var(--gold-primary);
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .features-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-item {
+            background: var(--dark-card);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-icon-big {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Manifesto Box */
+        .manifesto-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+            padding: 50px;
+            border-radius: 25px;
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            margin: 60px 0;
+        }
+
+        .manifesto-title {
+            font-size: 32px;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .manifesto-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .manifesto-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .manifesto-list li {
+            padding: 15px;
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border-right: 4px solid var(--gold-primary);
+        }
+
+        body[dir="ltr"] .manifesto-list li {
+            border-right: none;
+            border-left: 4px solid var(--gold-primary);
+        }
+
+        .manifesto-cta {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+        }
+
+        /* Crypto Showcase */
+        .crypto-showcase {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .crypto-title {
+            font-size: 32px;
+            color: var(--gold-light);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .crypto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .crypto-coin {
+            background: var(--dark-card);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .crypto-coin:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .coin-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .coin-name {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .coin-tag {
+            font-size: 14px;
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        /* Ranking Section */
+        .ranking-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .ranking-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ranking-title {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .ranking-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .ranking-counter {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--gold-primary);
+        }
+
+        .counter-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--gold-primary);
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Form Section */
+        .form-section {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 60px;
+            background: linear-gradient(135deg, var(--dark-card) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border-radius: 30px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 30px 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold-light);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--dark-card);
+            color: #fff;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: var(--gold-primary);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
+            border: none;
+            border-radius: 12px;
+            color: var(--dark-bg);
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 20px;
+            margin-top: 25px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .success-rank {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin: 10px 0;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid rgba(212, 175, 55, 0.1);
+            border-top: 3px solid var(--gold-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            color: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 100px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            color: var(--gold-light);
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold-primary);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* Hide/Show Lang Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-section { padding: 40px 25px; }
+            .manifesto-box { padding: 30px 20px; }
+            .features-comparison { grid-template-columns: 1fr; }
+            .crypto-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="lang-btn active" data-lang="ar">🇸🇦 العربية</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+    </div>
+
+    <div class="bg-animation"></div>
+
+    <div class="container">
+        <!-- Content will be loaded based on selected language -->
+        <div id="content"></div>
+    </div>
+
+    <script>
+        const content = {
+            ar: {
+                header: `
+                    <header>
+                        <span class="crown-icon">👑</span>
+                        <h1 class="app-title">GOLDEN STREET</h1>
+                        <p class="subtitle">الثورة الحقيقية في عالم التواصل</p>
+                        <p class="description">
+                            أول منصة في العالم تجمع بين التواصل الاجتماعي والعملات الرقمية الحقيقية!
+                        </p>
+                    </header>
+                `,
+                revolution: `
+                    <section class="revolution-section">
+                        <div class="revolution-badge">🚀 الأول من نوعه عالمياً</div>
+                        <h2 class="revolution-title">ثورة حقيقية في عالم التواصل الاجتماعي</h2>
+                        
+                        <div class="revolution-highlight">
+                            <p class="revolution-main-text">
+                                <strong>Golden Street</strong> هو <span class="text-gold">أول تطبيق في العالم</span> يجمع بين التواصل الاجتماعي والعملات الرقمية الحقيقية!
+                            </p>
+                        </div>
+
+                        <div class="features-comparison">
+                            <div class="feature-item">
+                                <div class="feature-icon-big">💰</div>
+                                <h3>هدايا حقيقية - ليست افتراضية!</h3>
+                                <p>اكسب عملات رقمية حقيقية مثل <strong>Shiba Inu، XRP</strong> وغيرها - ليست نقاط أو عملات وهمية!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🌟</div>
+                                <h3>فرصة جديدة لحياتك</h3>
+                                <p>كل مشارك يفتح باب جديد لحياته معنا - <strong>اكسب المال الحقيقي</strong> من محتواك!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">⚖️</div>
+                                <h3>شفافية 100% - لا ذكاء اصطناعي متحكم</h3>
+                                <p><strong>لا يوجد خوارزميات تقرر من يظهر ومن يختفي</strong> - السوق مفتوح للجميع بشكل عادل!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🎯</div>
+                                <h3>نحن ننافس الكبار</h3>
+                                <p>Golden Street يتحدى <strong>TikTok، Instagram، وغيرها</strong> - <strong>بفضل دعمكم</strong> سنكون الأولى!</p>
+                            </div>
+                        </div>
+
+                        <div class="manifesto-box">
+                            <h3 class="manifesto-title">🔥 معاً نصنع التاريخ</h3>
+                            <p class="manifesto-text">
+                                في Golden Street، <strong>أنت</strong> من يقرر نجاحك - ليس الخوارزميات أو الذكاء الاصطناعي.
+                                <br><br>
+                                <span class="text-gold">كن من الأوائل لمواكبة العصر</span> وانضم لثورة التواصل الاجتماعي الحقيقية حيث:
+                            </p>
+                            <ul class="manifesto-list">
+                                <li>✅ <strong>الشفافية التامة</strong> - لا تحكم خفي في المحتوى</li>
+                                <li>✅ <strong>الأرباح الحقيقية</strong> - عملات رقمية حقيقية، ليست وهمية</li>
+                                <li>✅ <strong>الفرص المتساوية</strong> - الجميع لديهم نفس فرصة النجاح</li>
+                                <li>✅ <strong>المجتمع يحكم</strong> - أنتم من تقررون من ينجح</li>
+                            </ul>
+                            <p class="manifesto-cta">
+                                🌍 <strong>بدعمكم، Golden Street ستكون المنصة الأولى عالمياً!</strong>
+                            </p>
+                        </div>
+
+                        <div class="crypto-showcase">
+                            <h3 class="crypto-title">💎 العملات الحقيقية التي ستكسبها</h3>
+                            <div class="crypto-grid">
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">🐕</div>
+                                    <div class="coin-name">Shiba Inu</div>
+                                    <div class="coin-tag">SHIB</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💠</div>
+                                    <div class="coin-name">XRP</div>
+                                    <div class="coin-tag">Ripple</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">👑</div>
+                                    <div class="coin-name">Golden Street Token</div>
+                                    <div class="coin-tag">GST</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💰</div>
+                                    <div class="coin-name">والمزيد</div>
+                                    <div class="coin-tag">قريباً</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                ranking: `
+                    <section class="ranking-section">
+                        <div class="ranking-icon">🏅</div>
+                        <h2 class="ranking-title">نظام الترتيب المباشر</h2>
+                        <p class="ranking-description">
+                            كل مشترك يحصل على رقم ترتيب فريد! سيتم عرض ترتيبك فوراً عند التسجيل.
+                        </p>
+                        <div class="ranking-counter">
+                            <span class="counter-number" id="count">0</span>
+                            <span class="counter-label">مشترك حتى الآن</span>
+                        </div>
+                    </section>
+                `,
+                form: `
+                    <section class="form-section">
+                        <h2 class="form-title">احجز مكانك الآن</h2>
+                        <p class="form-subtitle">الأماكن محدودة - كن من الأوائل!</p>
+                        
+                        <form id="form">
+                            <div class="form-group">
+                                <label>الاسم الكامل *</label>
+                                <input type="text" required placeholder="أدخل اسمك">
+                            </div>
+                            <div class="form-group">
+                                <label>البريد الإلكتروني *</label>
+                                <input type="email" required placeholder="example@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>الدولة *</label>
+                                <select required>
+                                    <option value="">اختر دولتك</option>
+                                    <option>السعودية</option>
+                                    <option>الإمارات</option>
+                                    <option>مصر</option>
+                                    <option>أخرى</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>عنوان المحفظة (اختياري)</label>
+                                <input type="text" placeholder="0x...">
+                            </div>
+                            <div class="form-group">
+                                <label>حساب التواصل (اختياري)</label>
+                                <input type="text" placeholder="@username">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" required id="terms">
+                                <label for="terms">أوافق على الشروط والأحكام</label>
+                            </div>
+                            <button type="submit" class="submit-btn">انضم للقائمة الذهبية</button>
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                                <p>جاري التسجيل...</p>
+                            </div>
+                            <div class="success-message" id="success">
+                                <h3>🎉 تم التسجيل بنجاح!</h3>
+                                <p>رقم ترتيبك:</p>
+                                <div class="success-rank" id="rank">#1</div>
+                                <p>شكراً لانضمامك! سنتواصل معك قريباً</p>
+                            </div>
+                        </form>
+                    </section>
+                `,
+                footer: `
+                    <footer>
+                        <div class="social-links">
+                            <a href="#">🐦</a>
+                            <a href="#">📷</a>
+                            <a href="#">💬</a>
+                            <a href="#">✈️</a>
+                        </div>
+                        <p>&copy; 2026 Golden Street. جميع الحقوق محفوظة.</p>
+                    </footer>
+                `
+            },
+            en: {
+                header: `
+                    <header>
+                        <span class="crown-icon">👑</span>
+                        <h1 class="app-title">GOLDEN STREET</h1>
+                        <p class="subtitle">The Real Social Media Revolution</p>
+                        <p class="description">
+                            World's first platform combining social media with real cryptocurrency!
+                        </p>
+                    </header>
+                `,
+                revolution: `
+                    <section class="revolution-section">
+                        <div class="revolution-badge">🚀 World's First</div>
+                        <h2 class="revolution-title">A Real Revolution in Social Media</h2>
+                        
+                        <div class="revolution-highlight">
+                            <p class="revolution-main-text">
+                                <strong>Golden Street</strong> is the <span class="text-gold">world's first app</span> combining social media with real cryptocurrency!
+                            </p>
+                        </div>
+
+                        <div class="features-comparison">
+                            <div class="feature-item">
+                                <div class="feature-icon-big">💰</div>
+                                <h3>Real Rewards - Not Virtual!</h3>
+                                <p>Earn real cryptocurrencies like <strong>Shiba Inu, XRP</strong> and more - not points or fake coins!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🌟</div>
+                                <h3>New Opportunity For Your Life</h3>
+                                <p>Every participant opens a new door - <strong>earn real money</strong> from your content!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">⚖️</div>
+                                <h3>100% Transparency - No Controlling AI</h3>
+                                <p><strong>No algorithms deciding who appears</strong> - the market is open fairly to everyone!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🎯</div>
+                                <h3>We Compete With Giants</h3>
+                                <p>Golden Street challenges <strong>TikTok, Instagram, and others</strong> - <strong>with your support</strong> we'll be #1!</p>
+                            </div>
+                        </div>
+
+                        <div class="manifesto-box">
+                            <h3 class="manifesto-title">🔥 Together We Make History</h3>
+                            <p class="manifesto-text">
+                                At Golden Street, <strong>YOU</strong> decide your success - not algorithms or AI.
+                                <br><br>
+                                <span class="text-gold">Be among the first</span> and join the real social media revolution where:
+                            </p>
+                            <ul class="manifesto-list">
+                                <li>✅ <strong>Complete Transparency</strong> - no hidden content control</li>
+                                <li>✅ <strong>Real Profits</strong> - real cryptocurrency, not fake</li>
+                                <li>✅ <strong>Equal Opportunities</strong> - everyone has the same chance</li>
+                                <li>✅ <strong>Community Rules</strong> - you decide who succeeds</li>
+                            </ul>
+                            <p class="manifesto-cta">
+                                🌍 <strong>With your support, Golden Street will be the world's #1 platform!</strong>
+                            </p>
+                        </div>
+
+                        <div class="crypto-showcase">
+                            <h3 class="crypto-title">💎 Real Cryptocurrencies You'll Earn</h3>
+                            <div class="crypto-grid">
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">🐕</div>
+                                    <div class="coin-name">Shiba Inu</div>
+                                    <div class="coin-tag">SHIB</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💠</div>
+                                    <div class="coin-name">XRP</div>
+                                    <div class="coin-tag">Ripple</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">👑</div>
+                                    <div class="coin-name">Golden Street Token</div>
+                                    <div class="coin-tag">GST</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💰</div>
+                                    <div class="coin-name">And More</div>
+                                    <div class="coin-tag">Coming Soon</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                ranking: `
+                    <section class="ranking-section">
+                        <div class="ranking-icon">🏅</div>
+                        <h2 class="ranking-title">Live Ranking System</h2>
+                        <p class="ranking-description">
+                            Every subscriber gets a unique rank! Your rank will be displayed immediately upon registration.
+                        </p>
+                        <div class="ranking-counter">
+                            <span class="counter-number" id="count">0</span>
+                            <span class="counter-label">Subscribers So Far</span>
+                        </div>
+                    </section>
+                `,
+                form: `
+                    <section class="form-section">
+                        <h2 class="form-title">Reserve Your Spot Now</h2>
+                        <p class="form-subtitle">Limited Spots - Be Among the First!</p>
+                        
+                        <form id="form">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" required placeholder="example@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Country *</label>
+                                <select required>
+                                    <option value="">Select your country</option>
+                                    <option>USA</option>
+                                    <option>UK</option>
+                                    <option>Canada</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Wallet Address (Optional)</label>
+                                <input type="text" placeholder="0x...">
+                            </div>
+                            <div class="form-group">
+                                <label>Social Handle (Optional)</label>
+                                <input type="text" placeholder="@username">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" required id="terms">
+                                <label for="terms">I agree to Terms and Conditions</label>
+                            </div>
+                            <button type="submit" class="submit-btn">Join the Golden List</button>
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                                <p>Registering...</p>
+                            </div>
+                            <div class="success-message" id="success">
+                                <h3>🎉 Successfully Registered!</h3>
+                                <p>Your Rank:</p>
+                                <div class="success-rank" id="rank">#1</div>
+                                <p>Thank you! We'll contact you soon</p>
+                            </div>
+                        </form>
+                    </section>
+                `,
+                footer: `
+                    <footer>
+                        <div class="social-links">
+                            <a href="#">🐦</a>
+                            <a href="#">📷</a>
+                            <a href="#">💬</a>
+                            <a href="#">✈️</a>
+                        </div>
+                        <p>&copy; 2026 Golden Street. All Rights Reserved.</p>
+                    </footer>
+                `
+            },
+            fr: {
+                header: `
+                    <header>
+                        <span class="crown-icon">👑</span>
+                        <h1 class="app-title">GOLDEN STREET</h1>
+                        <p class="subtitle">La Vraie Révolution des Médias Sociaux</p>
+                        <p class="description">
+                            Première plateforme au monde combinant médias sociaux et cryptomonnaie réelle!
+                        </p>
+                    </header>
+                `,
+                revolution: `
+                    <section class="revolution-section">
+                        <div class="revolution-badge">🚀 Premier au Monde</div>
+                        <h2 class="revolution-title">Une Vraie Révolution</h2>
+                        
+                        <div class="revolution-highlight">
+                            <p class="revolution-main-text">
+                                <strong>Golden Street</strong> est la <span class="text-gold">première application au monde</span> combinant médias sociaux et cryptomonnaie réelle!
+                            </p>
+                        </div>
+
+                        <div class="features-comparison">
+                            <div class="feature-item">
+                                <div class="feature-icon-big">💰</div>
+                                <h3>Récompenses Réelles!</h3>
+                                <p>Gagnez de vraies cryptomonnaies comme <strong>Shiba Inu, XRP</strong> - pas des points!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🌟</div>
+                                <h3>Nouvelle Opportunité</h3>
+                                <p>Chaque participant ouvre une nouvelle porte - <strong>gagnez de l'argent réel</strong>!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">⚖️</div>
+                                <h3>100% Transparence</h3>
+                                <p><strong>Pas d'algorithmes contrôlant</strong> - le marché est ouvert équitablement!</p>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-big">🎯</div>
+                                <h3>Nous Défions les Géants</h3>
+                                <p>Golden Street défie <strong>TikTok, Instagram</strong> - <strong>avec votre soutien</strong> nous serons #1!</p>
+                            </div>
+                        </div>
+
+                        <div class="manifesto-box">
+                            <h3 class="manifesto-title">🔥 Ensemble Nous Faisons l'Histoire</h3>
+                            <p class="manifesto-text">
+                                Chez Golden Street, <strong>VOUS</strong> décidez de votre succès.
+                                <br><br>
+                                <span class="text-gold">Soyez parmi les premiers</span> et rejoignez la vraie révolution où:
+                            </p>
+                            <ul class="manifesto-list">
+                                <li>✅ <strong>Transparence Complète</strong></li>
+                                <li>✅ <strong>Profits Réels</strong> - vraie cryptomonnaie</li>
+                                <li>✅ <strong>Opportunités Égales</strong></li>
+                                <li>✅ <strong>La Communauté Décide</strong></li>
+                            </ul>
+                            <p class="manifesto-cta">
+                                🌍 <strong>Avec votre soutien, Golden Street sera #1 mondiale!</strong>
+                            </p>
+                        </div>
+
+                        <div class="crypto-showcase">
+                            <h3 class="crypto-title">💎 Cryptomonnaies Que Vous Gagnerez</h3>
+                            <div class="crypto-grid">
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">🐕</div>
+                                    <div class="coin-name">Shiba Inu</div>
+                                    <div class="coin-tag">SHIB</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💠</div>
+                                    <div class="coin-name">XRP</div>
+                                    <div class="coin-tag">Ripple</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">👑</div>
+                                    <div class="coin-name">Golden Street Token</div>
+                                    <div class="coin-tag">GST</div>
+                                </div>
+                                <div class="crypto-coin">
+                                    <div class="coin-icon">💰</div>
+                                    <div class="coin-name">Et Plus</div>
+                                    <div class="coin-tag">Bientôt</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                ranking: `
+                    <section class="ranking-section">
+                        <div class="ranking-icon">🏅</div>
+                        <h2 class="ranking-title">Système de Classement</h2>
+                        <p class="ranking-description">
+                            Chaque abonné reçoit un rang unique!
+                        </p>
+                        <div class="ranking-counter">
+                            <span class="counter-number" id="count">0</span>
+                            <span class="counter-label">Abonnés</span>
+                        </div>
+                    </section>
+                `,
+                form: `
+                    <section class="form-section">
+                        <h2 class="form-title">Réservez Maintenant</h2>
+                        <p class="form-subtitle">Places Limitées!</p>
+                        
+                        <form id="form">
+                            <div class="form-group">
+                                <label>Nom Complet *</label>
+                                <input type="text" required placeholder="Votre nom">
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" required placeholder="exemple@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Pays *</label>
+                                <select required>
+                                    <option value="">Sélectionnez</option>
+                                    <option>France</option>
+                                    <option>Belgique</option>
+                                    <option>Suisse</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Adresse Portefeuille (Optionnel)</label>
+                                <input type="text" placeholder="0x...">
+                            </div>
+                            <div class="form-group">
+                                <label>Réseau Social (Optionnel)</label>
+                                <input type="text" placeholder="@nomutilisateur">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" required id="terms">
+                                <label for="terms">J'accepte les Conditions</label>
+                            </div>
+                            <button type="submit" class="submit-btn">Rejoindre la Liste</button>
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                                <p>Inscription...</p>
+                            </div>
+                            <div class="success-message" id="success">
+                                <h3>🎉 Inscription Réussie!</h3>
+                                <p>Votre Rang:</p>
+                                <div class="success-rank" id="rank">#1</div>
+                                <p>Merci! Nous vous contacterons bientôt</p>
+                            </div>
+                        </form>
+                    </section>
+                `,
+                footer: `
+                    <footer>
+                        <div class="social-links">
+                            <a href="#">🐦</a>
+                            <a href="#">📷</a>
+                            <a href="#">💬</a>
+                            <a href="#">✈️</a>
+                        </div>
+                        <p>&copy; 2026 Golden Street. Tous Droits Réservés.</p>
+                    </footer>
+                `
+            }
+        };
+
+        let currentLang = 'ar';
+        let subscriberCount = Math.floor(Math.random() * 500) + 300;
+
+        function loadContent(lang) {
+            const contentDiv = document.getElementById('content');
+            const data = content[lang];
+            contentDiv.innerHTML = data.header + data.revolution + data.ranking + data.form + data.footer;
+            
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            updateCounter();
+            setupForm();
+        }
+
+        function updateCounter() {
+            const counters = document.querySelectorAll('#count');
+            counters.forEach(counter => {
+                counter.textContent = subscriberCount.toLocaleString();
+            });
+        }
+
+        function setupForm() {
+            const form = document.getElementById('form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const loading = document.getElementById('loading');
+                const success = document.getElementById('success');
+                const rank = document.getElementById('rank');
+                
+                loading.classList.add('show');
+                
+                setTimeout(() => {
+                    subscriberCount++;
+                    updateCounter();
+                    
+                    loading.classList.remove('show');
+                    rank.textContent = '#' + subscriberCount;
+                    success.classList.add('show');
+                    
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        success.classList.remove('show');
+                    }, 8000);
+                }, 2000);
+            });
+        }
+
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentLang = this.dataset.lang;
+                loadContent(currentLang);
+            });
+        });
+
+        // Initialize
+        loadContent('ar');
+    </script>
+</body>
+</html>
