@@ -1,0 +1,14 @@
+name: Test Webhook
+
+on:
+  push:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test request
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"message":"hello from github"}' \
+          https://webhook.site/aa10a81d-5d2b-4f5e-8cd0-74438083486f?test=1
